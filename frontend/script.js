@@ -57,7 +57,7 @@ function agendar() {
     .then(res => res.json())
     .then(r => {
         if (r.sucesso) {
-            msg.innerText = "Agendado com sucesso ✅";
+            msg.innerText = "Agendamento confirmado ✅";
             msg.className = "sucesso";
         } else {
             msg.innerText = r.erro;
@@ -68,6 +68,7 @@ function agendar() {
 
 // ===== BARBEIRO =====
 if (location.pathname.includes("barbeiro")) {
+
     fetch("/agenda")
         .then(res => {
             if (res.status === 401) {
@@ -80,6 +81,7 @@ if (location.pathname.includes("barbeiro")) {
             if (!lista) return;
 
             tabela.innerHTML = "";
+
             lista.forEach(item => {
                 tabela.innerHTML += `
                     <tr>
@@ -98,7 +100,14 @@ if (location.pathname.includes("barbeiro")) {
         });
 }
 
+// ===== CANCELAR =====
 function cancelarAgendamento(id) {
     fetch(`/cancelar/${id}`, { method: "DELETE" })
         .then(() => location.reload());
+}
+
+// ===== LOGOUT =====
+function logout() {
+    fetch("/logout", { method: "POST" })
+        .then(() => window.location.href = "login.html");
 }
