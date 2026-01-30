@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Agendamento</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+    <h2>Agende seu horário 💈</h2>
+
+    <input id="nome" placeholder="Nome do cliente">
+
+    <input id="whatsapp" placeholder="WhatsApp">
+
+    <select id="servico">
+        <option>Corte</option>
+        <option>Barba</option>
+        <option>Corte + Barba</option>
+    </select>
+
+    <input type="date" id="data" onchange="atualizarHorarios()">
+
+    <select id="horario"></select>
+
+    <button onclick="agendar()">Agendar</button>
+
+    <p id="msg"></p>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
